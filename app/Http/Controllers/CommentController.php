@@ -45,7 +45,7 @@ class CommentController extends Controller {
 
             'name' => $request -> input ('name'),
             'comment' => $request -> input ('comment'),
-            'score' => $request -> input ('score'),
+            'score' => $request -> post ('score'),
             'movie' => $request -> input ('movie'),
             'likes' => 0,
 
@@ -59,11 +59,13 @@ class CommentController extends Controller {
 
         return view ('comments.show', compact ('comment'));
 
+
     }
 
     public function edit (Comment $comment) {
 
         return view ('comments.edit', compact ('comment'));
+
 
     }
 
@@ -73,6 +75,7 @@ class CommentController extends Controller {
 
         $comment -> update ([
             'comment' => $request -> comment,
+            'score' => $request -> score,
         ]);
 
         return redirect () -> action ('CommentController@index');
