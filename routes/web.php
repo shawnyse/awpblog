@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});  // this is the default route
+Route::get ('/', 'CommentController@index'); // this is the root route
+Route::get ('/comment/{comment}/', 'CommentController@show');
+Route::get ('/comment/{comment}/delete/', 'CommentController@destroy');
+Route::get ('/comment/{comment}/edit/', 'CommentController@edit');
+Route::post ('/comment/{comment}/edit/', 'CommentController@update');
+Route::get ('/add/', 'CommentController@create');
+Route::post ('/add/', 'CommentController@store');
+Route::get ('/comment/{comment}/like/', 'LikesController@upVote');
+Route::get ('/comment/{comment}/dislike/', 'LikesController@downVote');
