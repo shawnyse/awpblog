@@ -11,6 +11,6 @@ $factory->define(Comment::class, function (Faker $faker) {
         'comment' => $faker -> sentence (12, true) . ' ' . $faker -> emoji,
         'likes' => $faker -> numberBetween (-20, 150),
         'score' => $faker -> numberBetween (0,10),
-        'movie' => $faker -> word(), //I can' find random movie names so use Word instead, just a test.
+        'movie' => $faker -> city, //I can' find random movie names so use City instead, just a test.
     ];
 });
