@@ -11,7 +11,9 @@
     <link rel="icon" type="image/png" href="{{ asset ('images/film.ico') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
-    <link rel="stylesheet" href="{{asset ( 'css/moviecomment.css' )}}" />
+    <link rel="stylesheet" href="{{asset ( 'css/movieComment.css' )}}" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
 

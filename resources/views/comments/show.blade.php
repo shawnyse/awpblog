@@ -11,7 +11,7 @@
 @section ('content')
 
     <div class="box">
-        <table class="table is-striped">
+        <table class="table is-striped table is-hoverable" >
             <tbody>
             <tr>
                 <td>Name:</td>
@@ -30,14 +30,27 @@
                 <td>{{ $comment -> score }}</td>
             </tr>
             <tr>
-                <td></td>
+                <td>Comment:</td>
                 <td>{{ $comment -> comment }}</td>
             </tr>
             </tbody>
         </table>
+
+        <div class="field is-grouped">
+            <p class="control">
+                <a class="button is-primary is-outlined" href="/comment/{{ $comment -> id }}/like/">
+                    <i class="fa fa-thumbs-o-up"></i>&nbspAgree
+                </a>
+            <p class="control">
+                <a class="button is-danger is-outlined" href="/comment/{{ $comment -> id }}/dislike/">
+                    <i class="fa fa-thumbs-o-down"></i>&nbspDisagree
+                </a>
+            <p class="control">
+                <a class="button is-info is-outlined" href="/comment">
+                    <i class="fa fa-reply"></i>&nbspBack
+                </a>
+        </div>
     </div>
-    <p>
-        <a class="button is-info" href="/">Back</a>
-    </p>
+
 @endsection
 

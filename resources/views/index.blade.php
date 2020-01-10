@@ -37,10 +37,10 @@
 
                         <tr>
                             <td style="font-weight: bold">{{ $c -> id }}</td>
-                            <td>{{ $c -> name }}</td>
-                            <td>{{ $c -> movie }}</td>
+                            <td >{{ $c -> name }}</td>
+                            <td >{{ $c -> movie }}</td>
                             <td style="text-align: center;">{{ $c -> score }}</td>
-                            <td>{{ $c -> comment }}</td>
+                            <td style="word-break:break-all">{{ $c -> comment }}</td>
                             <td>{{ $c -> updated_at -> format ('D jS F') }}</td>
                             <td style="text-align: center;">{{ $c -> likes }}</td>
                             <td>
@@ -81,7 +81,7 @@
                 {{ $comments -> links () }}
 
             @else
-                <div class="notification is-info">
+                <div class="notification is-info is-light ">
                     <p>
                         The Movie Comment is empty. Why not add a comment?
                     </p>
@@ -90,9 +90,8 @@
         </div>
 
         <div class="box">
-            <a class="button is-primary" href="/add/">Add a Comment</a>
+            <a class="button is-primary" href="/add/">
+                <i class="fa fa-plus-circle"></i>&nbspAdd a Comment
+            </a>
         </div>
-
-    </div>
-
 @endsection
