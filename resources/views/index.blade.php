@@ -32,16 +32,17 @@
                     </thead>
                     <tbody>
 
+
                     @foreach ($comments as $c)
 
                         <tr>
-                            <td>{{ $c -> id }}</td>
+                            <td style="font-weight: bold">{{ $c -> id }}</td>
                             <td>{{ $c -> name }}</td>
                             <td>{{ $c -> movie }}</td>
-                            <td>{{ $c -> score }}</td>
+                            <td style="text-align: center;">{{ $c -> score }}</td>
                             <td>{{ $c -> comment }}</td>
                             <td>{{ $c -> updated_at -> format ('D jS F') }}</td>
-                            <td>{{ $c -> likes }}</td>
+                            <td style="text-align: center;">{{ $c -> likes }}</td>
                             <td>
                                 <a class="button"
                                    href="/comment/{{ $c -> id }}/">
@@ -95,4 +96,3 @@
     </div>
 
 @endsection
-

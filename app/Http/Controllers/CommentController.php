@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller {
 
-    const COMMENTS_PER_PAGE = 10;
+    const COMMENTS_PER_PAGE = 6;
 
     const RULES = [
         'name' => 'required|min:3|max:64',
