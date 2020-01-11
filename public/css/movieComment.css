@@ -5,16 +5,24 @@ html,body{
 }
 
 body {
+    padding-bottom: 1000px;
     padding-top: 30px;
-    padding-bottom: 900px;
     text-align: left;
-    background-color: #2B3E50;
+    background-color: white;
 }
 
-/*.main-table {*/
-/*    margin-top: 10px;*/
+div.card{
+    height: 375px;
+    width: 460px;
+    position:absolute;
+    left:450px;
+    top: 55px;
 
-/*}*/
+}
+.main-table {
+    margin-top: 10px;
+
+}
 
 /* Main Table */
 
@@ -52,9 +60,8 @@ ul.pagination li:hover:not(.active) {
     margin-left: 40%;
 }
 
-.box {
+div.box {
     table-layout:fixed;
-    width:95%;
     border:1px;
-
 }
+

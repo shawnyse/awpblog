@@ -11,7 +11,7 @@
 @section ('content')
 
     <div class="container main-table">
-        <div class="box">
+        <div class="box" style="position: absolute;">
 
             @if (count ($comments) > 0)
                 <table class="table is-striped is-hoverable">
@@ -88,10 +88,16 @@
                 </div>
             @endif
         </div>
-
-        <div class="box">
-            <a class="button is-primary" href="/add/">
-                <i class="fa fa-plus-circle"></i>&nbspAdd a Comment
-            </a>
-        </div>
+     <nav class="navbar is-size-4-tablet is-dark is-fixed-bottom">
+         <div class="navbar-item">
+             <div class="buttons">
+             <a class="button is-primary" href="/add/">
+              <span class="icon">
+                <i class="fa fa-plus-circle"></i>
+              </span>
+                 <span>&nbspAdd a Comment</span>
+             </a>
+             </div>
+         </div>
+     </nav>
 @endsection

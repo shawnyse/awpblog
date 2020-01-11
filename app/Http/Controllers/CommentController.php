@@ -6,6 +6,12 @@ use App\Comment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller {
+/*only if login, can see this page*/
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 
     const COMMENTS_PER_PAGE = 6;
 
@@ -89,5 +95,12 @@ class CommentController extends Controller {
         return redirect () -> action ('CommentController@index');
 
     }
+    public function logout(Request $request)
+    {
+        Auth::guard()->logout();
 
+        $request->session()->invalidate();
+        // 自定义重定向地址
+        return redirect('/');
+    }
 }
