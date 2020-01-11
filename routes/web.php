@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});  // this is the default route
-//Route::get ('/', 'CommentController@index'); // Home page
-Route::get ('/comment', 'CommentController@index'); // Main page
+//Route::get('/', function () {
+//    return view('welcome');
+//});  // this is the default route
+Route::get ('/', 'CommentController@index'); // Home page
+//Route::get ('/comment', 'CommentController@index'); // Main page
 Route::get ('/comment/{comment}/', 'CommentController@show');
 Route::get ('/comment/{comment}/delete/', 'CommentController@destroy');
 Route::get ('/comment/{comment}/edit/', 'CommentController@edit');

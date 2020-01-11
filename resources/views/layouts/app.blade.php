@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset ( 'css/movieComment.css' )}}" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 </head>
 <body>
 
@@ -21,12 +22,8 @@
     <h1 class="title" style="margin-top: 30px; color:white; font-size:50px; font-weight: bold">
         @yield ('page_heading', 'MovieComments')
     </h1>
-
     @yield ('content')
-
 </div>
-
-<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
 </body>
 </html>
