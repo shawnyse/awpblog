@@ -18,7 +18,7 @@
 </head>
 <body>
 {{--login system--}}
-    <nav class="navbar is-size-4-tablet is-info is-fixed-top" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-size-4-tablet is-white is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/comment">
                 <i class="fa fa-home"></i>&nbspHome
