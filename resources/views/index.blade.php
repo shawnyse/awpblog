@@ -11,7 +11,7 @@
 @section ('content')
 
     <div class="container main-table">
-        <div class="box" style="position: absolute;">
+        <div class="box">
 
             @if (count ($comments) > 0)
                 <table class="table is-striped is-hoverable">
