@@ -1,7 +1,7 @@
 @extends ('layouts.app')
 
 @section ('page_title')
-    MovieComments
+    MovieComments | Search
 @endsection
 
 @section ('page_heading')
