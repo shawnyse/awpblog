@@ -1,11 +1,10 @@
 /* General Layout */
 html,body{
     width:100%;
-    height:100%
+    height:130%
 }
 
 body {
-    padding-bottom: 1000px;
     padding-top: 30px;
     text-align: left;
     background-color: white;

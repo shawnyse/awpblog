@@ -18,39 +18,39 @@
 </head>
 <body>
 {{--login system--}}
-    <nav class="navbar is-size-4-tablet is-white is-fixed-top" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/comment">
-                <i class="fa fa-home"></i>&nbspHome
-            </a>
-        </div>
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        @guest
-                        <a class="button is-light" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            @if (Route::has('register'))
-                                <a class="button is-primary" href="{{ route('register') }}"><strong>{{ __('Register') }}</strong></a>
-                            @endif
-                        @else
-                            <a class="button is-white">
-                                {{ Auth::user()->name }}
-                            </a>
-                                    <div class="button is-white">
-                                <a class="navbar-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+<nav class="navbar is-size-4-tablet is-white is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/comment">
+            <i class="fa fa-home"></i>&nbspHome
+        </a>
+    </div>
+    <div class="navbar-end">
+        <div class="navbar-item">
+            <div class="buttons">
+                @guest
+                    <a class="button is-light" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    @if (Route::has('register'))
+                        <a class="button is-primary" href="{{ route('register') }}"><strong>{{ __('Register') }}</strong></a>
+                    @endif
+                @else
+                    <a class="button is-white">
+                        {{ Auth::user()->name }}
+                    </a>
+                    <div class="button is-white">
+                        <a class="navbar-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-                                    </div>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            @endguest
+                            {{ __('Logout') }}
+                        </a>
                     </div>
-                </div>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @endguest
             </div>
-    </nav>
+        </div>
+    </div>
+</nav>
 
 <div class="container">
     <h1 class="title" style="margin-top: 30px; color:black; font-size:50px; font-weight: bold">

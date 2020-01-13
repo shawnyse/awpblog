@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use Illuminate\Http\Request;
-
-class CommentController extends Controller {
-/*only if login, can see this page*/
+use Illuminate\Support\Facades\DB;
+class CommentController extends Controller
+{
+    /*only if login, can see this page*/
     public function __construct()
     {
         $this->middleware('auth');
     }
 
 
-    const COMMENTS_PER_PAGE = 6;
+    const COMMENTS_PER_PAGE = 10;
 
     const RULES = [
         'name' => 'required|min:3|max:64',
@@ -29,72 +30,81 @@ class CommentController extends Controller {
         'score.required' => 'Please rate this movie.',
     ];
 
-    public function index () {
+    public function index()
+    {
 
-        $comments = Comment::paginate (self::COMMENTS_PER_PAGE);
+        $comments = Comment::paginate(self::COMMENTS_PER_PAGE);
 
-        return view ('index') -> with (['comments' => $comments]);
-
-    }
-
-    public function create () {
-
-        return view ('comments.create');
+        return view('index')->with(['comments' => $comments]);
 
     }
 
-    public function store (Request $request) {
+    public function create()
+    {
 
-        $request -> validate (self::RULES, self::MESSAGES);
+        return view('comments.create');
 
-        Comment::create ([
+    }
 
-            'name' => $request -> input ('name'),
-            'comment' => $request -> input ('comment'),
-            'score' => $request -> post ('score'),
-            'movie' => $request -> input ('movie'),
+    public function store(Request $request)
+    {
+
+        $request->validate(self::RULES, self::MESSAGES);
+
+        Comment::create([
+
+            'name' => $request->input('name'),
+            'comment' => $request->input('comment'),
+            'score' => $request->post('score'),
+            'movie' => $request->input('movie'),
             'likes' => 0,
 
         ]);
 
-        return redirect () -> action ('CommentController@index');
+        return redirect()->action('CommentController@index');
 
     }
 
-    public function show (Comment $comment) {
+    public function show(Comment $comment)
+    {
 
-        return view ('comments.show', compact ('comment'));
-
-
-    }
-
-    public function edit (Comment $comment) {
-
-        return view ('comments.edit', compact ('comment'));
+        return view('comments.show', compact('comment'));
 
 
     }
 
-    public function update (Request $request, Comment $comment) {
+    public function edit(Comment $comment)
+    {
 
-        $request -> validate (self::RULES, self::MESSAGES);
+        return view('comments.edit', compact('comment'));
 
-        $comment -> update ([
-            'comment' => $request -> comment,
-            'score' => $request -> score,
+
+    }
+
+    public function update(Request $request, Comment $comment)
+    {
+
+        $request->validate(self::RULES, self::MESSAGES);
+
+        $comment->update([
+            'comment' => $request->comment,
+            'score' => $request->score,
         ]);
 
-        return redirect () -> action ('CommentController@index');
+        return redirect()->action('CommentController@index');
 
     }
 
-    public function destroy (Comment $comment) {
+    public function destroy(Comment $comment)
+    {
 
-        $comment -> delete ();
+        $comment->delete();
 
-        return redirect () -> action ('CommentController@index');
+        return redirect()->action('CommentController@index');
 
     }
+
+    /*logout function*/
     public function logout(Request $request)
     {
         Auth::guard()->logout();
@@ -103,4 +113,26 @@ class CommentController extends Controller {
         // 自定义重定向地址
         return redirect('/');
     }
+
+    /*search function*/
+    public function result(Request $request)
+    {
+        $keyword = $request->input('keyword'); //get keywords from form named 'keyword'
+        $type = $request->input('type'); //get type from <selet> named type
+        /*Do some basic condition judgement*/
+        if($type == 'User'){
+            $result = DB::table('comments')->where('name','like',"%".$keyword."%")->get();
+        } elseif ($type == 'Comment') {
+            $result = DB::table('comments')->where('comment','like',"%".$keyword."%")->get();
+        } elseif($type == 'Score'){
+            $result = DB::table('comments')->where('score','like',"%".$keyword."%")->get();
+        } elseif ($type == 'Movie'){
+            $result = DB::table('comments')->where('movie' ,'like',"%".$keyword."%")->get();
+        } else{
+            $result = DB::table('comments')->where('likes','like',"%".$keyword."%")->get();
+        }
+        /*Return view and variable to front-end*/
+        return view('comments.search',compact('keyword','type','result'));
+    }
+
 }
