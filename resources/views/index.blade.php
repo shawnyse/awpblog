@@ -28,7 +28,7 @@
                 <input class="input is-fullwidth" name="keyword" type="text" placeholder="Enter Keywords for Search">
             </p>
             <div class="control">
-                <button class="button is-primary" type="submit"">
+                <button class="button is-primary" type="submit">
                 <span class="icon">
                         <i class="fa fa-search"></i>
                     </span>

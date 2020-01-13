@@ -114,25 +114,51 @@ class CommentController extends Controller
         return redirect('/');
     }
 
-    /*search function*/
-    public function result(Request $request)
-    {
-        $keyword = $request->input('keyword'); //get keywords from form named 'keyword'
-        $type = $request->input('type'); //get type from <selet> named type
-        /*Do some basic condition judgement*/
-        if($type == 'User'){
-            $result = DB::table('comments')->where('name','like',"%".$keyword."%")->get();
-        } elseif ($type == 'Comment') {
-            $result = DB::table('comments')->where('comment','like',"%".$keyword."%")->get();
-        } elseif($type == 'Score'){
-            $result = DB::table('comments')->where('score','like',"%".$keyword."%")->get();
-        } elseif ($type == 'Movie'){
-            $result = DB::table('comments')->where('movie' ,'like',"%".$keyword."%")->get();
-        } else{
-            $result = DB::table('comments')->where('likes','like',"%".$keyword."%")->get();
-        }
-        /*Return view and variable to front-end*/
-        return view('comments.search',compact('keyword','type','result'));
+    /*Rearranged search function*/
+    public function result(Request $request){
+
+        $keyword = $request -> input('keyword');
+        $type    = $request -> input('type');
+
+        $paramMap = [
+            'User'    => 'name',
+            'Movie'   => 'movie',
+            'Comment' => 'comment',
+            'Score'   => 'score',
+            'default' => 'likes',
+        ];
+
+        $result = DB::table('comments')
+            ->where(
+                $paramMap[$type] ?? $paramMap['default'],
+                'like',
+                "%".$keyword."%"
+            )
+            ->get();
+        return view('comments.search',compact('keyword','result','type'));
     }
 
 }
+
+    /*old search function*/
+//    public function result(Request $request)
+//    {
+//        $keyword = $request->input('keyword'); //get keywords from form named 'keyword'
+//        $type = $request->input('type'); //get type from <selet> named type
+//        /*Do some basic condition judgement*/
+//        if($type == 'User'){
+//            $result = DB::table('comments')->where('name','like',"%".$keyword."%")->get();
+//        } elseif ($type == 'Comment') {
+//            $result = DB::table('comments')->where('comment','like',"%".$keyword."%")->get();
+//        } elseif($type == 'Score'){
+//            $result = DB::table('comments')->where('score','like',"%".$keyword."%")->get();
+//        } elseif ($type == 'Movie'){
+//            $result = DB::table('comments')->where('movie' ,'like',"%".$keyword."%")->get();
+//        } else{
+//            $result = DB::table('comments')->where('likes','like',"%".$keyword."%")->get();
+//        }
+//        /*Return view and variable to front-end*/
+//        return view('comments.search',compact('keyword','type','result'));
+//    }
+
+

@@ -1,15 +1,17 @@
 @extends ('layouts.app')
 
 @section ('page_title')
-    Comments | Search
-@endsection
-@section ('page_heading')
-    Search result for "{{$keyword}}"
+    MovieComments
 @endsection
 
+@section ('page_heading')
+    Result for "{{$keyword}}"
+@endsection
+
+@section ('content')
 {{--main table--}}
-<div class="container main-table" style="left: 350px;" >
-    <div class="box" style="position: absolute;">
+<div class="container main-table">
+    <div class="box">
         @if (count ($result) > 0)
             <table class="table is-striped is-hoverable">
                 <thead>
@@ -19,7 +21,6 @@
                     <th>Movie</th>
                     <th>Score</th>
                     <th>Comment</th>
-                    <th>Date</th>
                     <th>Agree/Disagree</th>
                     <th></th>
                     <th></th>
@@ -35,7 +36,6 @@
                         <td >{{ $c -> movie }}</td>
                         <td style="text-align: center;">{{ $c -> score }}</td>
                         <td style="word-break:break-all">{{ $c -> comment }}</td>
-                        {{--                    <td>{{ $c -> updated_at -> format ('D jS F') }}</td>--}}
                         <td style="text-align: center;">{{ $c -> likes }}</td>
                         <td>
                             <a class="button" href="/comment/{{ $c -> id }}/">
@@ -67,13 +67,25 @@
                 </tbody>
             </table>
         @else
-            <div class="notification is-info is-light ">
+            <div class="notification is-danger is-light ">
                 <p>
-                    Sorry, Can' find "{{$keyword}}" about {{$type}}.
+                    Sorry, Can' find "{{$keyword}}" about "{{$type}}".
                 </p>
             </div>
         @endif
     </div>
 </div>
+
+{{--Back to home buttom--}}
+<nav class="navbar is-size-4-tablet is-dark is-fixed-bottom">
+    <div class="navbar-item">
+        <div class="buttons">
+            <a class="button is-info is-outlined" href="/comment">
+                    <i class="fa fa-reply"></i>&nbspBack
+            </a>
+        </div>
+    </div>
+</nav>
+@endsection
 
 
