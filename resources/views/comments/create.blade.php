@@ -23,7 +23,7 @@
                     User
                 </label>
                 <div class="control">
-                    <input class="input" type="text" name="name" placeholder="Enter User's Name">
+                    <input class="input" type="text" name="name" value="{{ Auth::user () -> name }}" readonly>
                 </div>
             </div>
 

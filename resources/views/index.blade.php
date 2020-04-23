@@ -68,7 +68,7 @@
                             <td >{{ $c -> movie }}</td>
                             <td style="text-align: center;">{{ $c -> score }}</td>
                             <td style="word-break:break-all">{{ $c -> comment }}</td>
-                            <td>{{ $c -> updated_at -> format ('D jS F') }}</td>
+                            <td>{{ $c -> updated_at -> format ('l jS F') }}</td>
                             <td style="text-align: center;">{{ $c -> likes }}</td>
                             <td>
                                 <a class="button" href="/comment/{{ $c -> id }}/">
