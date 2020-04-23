@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use App\Org\code\Code;
+
 class LoginController extends Controller
 {
     /*
@@ -36,5 +38,12 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+//Generate Verification Code
+    public function code()
+    {
+        $code = new Code();
+        return $code->make();
     }
 }

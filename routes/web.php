@@ -12,27 +12,27 @@
 */
 
 //Route::get ('/', 'CommentController@index'); // Home page
-Route::get ('/comment','CommentController@index'); // Main page
-Route::get ('/comment/{comment}/', 'CommentController@show');//show page
-Route::get ('/comment/{comment}/delete/', 'CommentController@destroy');//delete function
+Route::get('/comment', 'CommentController@index'); // Main page
+Route::get('/comment/{comment}/', 'CommentController@show');//show page
+Route::get('/comment/{comment}/delete/', 'CommentController@destroy');//delete function
 /*below is edit page*/
-Route::get ('/comment/{comment}/edit/', 'CommentController@edit');
-Route::post ('/comment/{comment}/edit/', 'CommentController@update');
+Route::get('/comment/{comment}/edit/', 'CommentController@edit');
+Route::post('/comment/{comment}/edit/', 'CommentController@update');
 /*below is add page*/
-Route::get ('/add/', 'CommentController@create');
-Route::post ('/add/', 'CommentController@store');
+Route::get('/add/', 'CommentController@create');
+Route::post('/add/', 'CommentController@store');
 /*like&dislike function*/
-Route::get ('/comment/{comment}/like/', 'LikesController@upVote');
-Route::get ('/comment/{comment}/dislike/', 'LikesController@downVote');
+Route::get('/comment/{comment}/like/', 'LikesController@upVote');
+Route::get('/comment/{comment}/dislike/', 'LikesController@downVote');
 /*search function*/
-Route::post ('/search/', 'CommentController@result');
+Route::post('/search/', 'CommentController@result');
 
 /*For Login system*/
 
 Route::get('/', function () {
     return view('welcome');
 }); // this is the default route
-
+Route::get('auth/code', 'auth\LoginController@code');//This is for verification code
 Auth::routes();
 
 

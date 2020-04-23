@@ -11,7 +11,7 @@
 @section ('content')
 
     <div class="box" style="position: absolute;">
-        <table class="table is-striped table is-hoverable" >
+        <table class="table is-striped table is-hoverable">
             <tbody>
             <tr>
                 <td>Name:</td>

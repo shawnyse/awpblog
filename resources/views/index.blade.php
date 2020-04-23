@@ -10,7 +10,7 @@
 
 @section ('content')
     {{--search panel&button--}}
-    <form action = "/search/" method="POST">
+    <form action="/search/" method="POST">
         @csrf
         <div class="field has-addons has-addons-centered">
             <p class="control">
@@ -32,7 +32,7 @@
                 <span class="icon">
                         <i class="fa fa-search"></i>
                     </span>
-                <span>&nbspSearch</span>
+                    <span>&nbspSearch</span>
                 </button>
             </div>
         </div>
@@ -64,8 +64,8 @@
                     @foreach ($comments as $c)
                         <tr>
                             <td style="font-weight: bold">{{ $c -> id }}</td>
-                            <td >{{ $c -> name }}</td>
-                            <td >{{ $c -> movie }}</td>
+                            <td>{{ $c -> name }}</td>
+                            <td>{{ $c -> movie }}</td>
                             <td style="text-align: center;">{{ $c -> score }}</td>
                             <td style="word-break:break-all">{{ $c -> comment }}</td>
                             <td>{{ $c -> updated_at -> format ('l jS F') }}</td>
