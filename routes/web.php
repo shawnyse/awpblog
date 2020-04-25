@@ -32,7 +32,11 @@ Route::post('/search/', 'CommentController@result');
 Route::get('/', function () {
     return view('welcome');
 }); // this is the default route
-Route::get('auth/code', 'auth\LoginController@code');//This is for verification code
 Auth::routes();
 
+/*This is for verification code*/
+Route::get('auth/code', 'Auth\LoginController@code');
 
+/*github*/
+Route::get ('/auth/github', 'GitHubAuthController@auth');
+Route::get ('/auth/github/callback', 'GitHubAuthController@callback');

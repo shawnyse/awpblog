@@ -23,7 +23,7 @@
                         User:
                     </label>
                     <div class="control">
-                        <input class="input" type="text" name="name" value="{{ $comment -> name }}" readonly>
+                        <input class="input" type="text" name="name" value="{{ $comment -> user -> name }}" readonly>
                     </div>
                 </div>
 

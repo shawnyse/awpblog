@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use App\Org\code\Code;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Console\Input\Input;
 
 class LoginController extends Controller
 {
@@ -46,4 +49,5 @@ class LoginController extends Controller
         $code = new Code();
         return $code->make();
     }
+
 }

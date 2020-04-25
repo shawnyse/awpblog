@@ -81,6 +81,7 @@
                     @endif
                 </div>
             </div>
+            @include ('auth.github-login')
         </div>
     </div>
 @endsection

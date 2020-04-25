@@ -5,9 +5,14 @@
 use App\Comment;
 use Faker\Generator as Faker;
 
+use App\User;
+
 $factory->define(Comment::class, function (Faker $faker) {
+
+    $users = User::all ();
+
     return [
-        'name' => $faker -> firstName . ' ' . $faker -> lastName,
+        'user_id' => $users -> random (),
         'comment' => $faker -> sentence (12, true) . ' ' . $faker -> emoji,
         'likes' => $faker -> numberBetween (-20, 150),
         'score' => $faker -> numberBetween (0,10),

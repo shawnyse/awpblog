@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 class CommentController extends Controller
 {
     /*only if login, can see this page*/
@@ -17,7 +20,6 @@ class CommentController extends Controller
     const COMMENTS_PER_PAGE = 10;
 
     const RULES = [
-        'name' => 'required|min:3|max:64',
         'comment' => 'required|min:2|max:256',
         'score' => 'required|min:0|max:10',
         'movie' => 'required|min:1|max:64',
@@ -53,7 +55,7 @@ class CommentController extends Controller
 
         Comment::create([
 
-            'name' => $request->input('name'),
+            'user_id' => Auth::user()->id,
             'comment' => $request->input('comment'),
             'score' => $request->post('score'),
             'movie' => $request->input('movie'),
@@ -114,28 +116,33 @@ class CommentController extends Controller
         return redirect('/');
     }
 
-    /*Rearranged search function*/
-    public function result(Request $request){
+    /*search function*/
+    public function result(Request $request)
+    {
 
-        $keyword = $request -> input('keyword');
-        $type    = $request -> input('type');
+        $keyword = $request->input('keyword');
+        $type = $request->input('type');
 
         $paramMap = [
-            'User'    => 'name',
-            'Movie'   => 'movie',
+            'Movie' => 'movie',
             'Comment' => 'comment',
-            'Score'   => 'score',
+            'Score' => 'score',
             'default' => 'likes',
         ];
 
-        $result = DB::table('comments')
-            ->where(
-                $paramMap[$type] ?? $paramMap['default'],
-                'like',
-                "%".$keyword."%"
-            )
-            ->get();
-        return view('comments.search',compact('keyword','result','type'));
+        if ($type == 'User') {
+            $result = User::where('name', 'like', '%'.$keyword.'%')->with("comment")->get();
+        } else {
+            $result = Comment::where(
+                    $paramMap[$type] ?? $paramMap['default'],
+                    'like',
+                    "%" . $keyword . "%"
+                )
+                ->with("user")
+                ->get();
+        }
+
+        return view('comments.search', compact('keyword', 'result', 'type'));
     }
 
 }

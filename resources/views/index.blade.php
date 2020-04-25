@@ -46,7 +46,6 @@
                 <table class="table is-striped is-hoverable">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>User</th>
                         <th>Movie</th>
                         <th>Score</th>
@@ -63,8 +62,7 @@
 
                     @foreach ($comments as $c)
                         <tr>
-                            <td style="font-weight: bold">{{ $c -> id }}</td>
-                            <td>{{ $c -> name }}</td>
+                            <td style="font-weight: bold">{{ $c -> user -> name }}</td>
                             <td>{{ $c -> movie }}</td>
                             <td style="text-align: center;">{{ $c -> score }}</td>
                             <td style="word-break:break-all">{{ $c -> comment }}</td>

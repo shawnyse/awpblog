@@ -6,7 +6,7 @@
 @section ('page_heading')
 @endsection
 @section('content')
-    <div class="card" style=" height: 500px; width: 460px;">
+    <div class="card" style=" height:auto; width: 460px;">
         <div class="card-content">
             <header class="card-header ">
                 <div class="card-header-title">
@@ -74,6 +74,7 @@
                     <button class="button is-link" type="submit">{{ __('Register') }}</button>
                 </div>
             </div>
+            @include ('auth.github-login')
         </div>
     </div>
 @endsection

@@ -15,7 +15,7 @@
             <tbody>
             <tr>
                 <td>Name:</td>
-                <td>{{ $comment -> name }}</td>
+                <td>{{ $comment -> user -> name }}</td>
             </tr>
             <tr>
                 <td>Date:</td>
