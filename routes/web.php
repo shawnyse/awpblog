@@ -40,3 +40,7 @@ Route::get('auth/code', 'Auth\LoginController@code');
 /*github*/
 Route::get ('/auth/github', 'GitHubAuthController@auth');
 Route::get ('/auth/github/callback', 'GitHubAuthController@callback');
+
+/*weibo*/
+Route::get ('/auth/weibo', 'WeiboAuthController@auth');
+Route::get ('/auth/weibo/callback', 'WeiboAuthController@callback');

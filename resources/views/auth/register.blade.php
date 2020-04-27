@@ -74,7 +74,7 @@
                     <button class="button is-link" type="submit">{{ __('Register') }}</button>
                 </div>
             </div>
-            @include ('auth.github-login')
+            @include ('auth.thridParty-login')
         </div>
     </div>
 @endsection
