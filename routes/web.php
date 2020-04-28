@@ -27,6 +27,9 @@ Route::get('/comment/{comment}/dislike/', 'LikesController@downVote');
 /*search function*/
 Route::post('/search/', 'CommentController@result');
 
+/*personal detail*/
+Route::get('/userDetail/', 'CommentController@userDetail');
+
 /*For Login system*/
 
 Route::get('/', function () {

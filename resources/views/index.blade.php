@@ -38,11 +38,11 @@
         </div>
     </form>
 
-
     <div class="container main-table">
         <div class="box">
 
             @if (count ($comments) > 0)
+                @yield('commentTable')
                 <table class="table is-striped is-hoverable">
                     <thead>
                     <tr>
@@ -69,27 +69,27 @@
                             <td>{{ $c -> updated_at -> format ('l jS F') }}</td>
                             <td style="text-align: center;">{{ $c -> likes }}</td>
                             <td>
-                                <a class="button" href="/comment/{{ $c -> id }}/">
+                                <a class="button" href="/comment/{{ $c -> id }}/" title="View">
                                     <ion-icon name="information-circle-outline"></ion-icon>
                                 </a>
                             </td>
                             <td>
-                                <a class="button" href="/comment/{{ $c -> id }}/edit/">
+                                <a class="button" href="/comment/{{ $c -> id }}/edit/" title="Edit">
                                     <ion-icon name="create"></ion-icon>
                                 </a>
                             </td>
                             <td>
-                                <a class="button" href="/comment/{{ $c -> id }}/delete/">
+                                <a class="button" href="/comment/{{ $c -> id }}/delete/" title="Delete">
                                     <ion-icon name="trash"></ion-icon>
                                 </a>
                             </td>
                             <td>
-                                <a class="button" href="/comment/{{ $c -> id }}/like/">
+                                <a class="button" href="/comment/{{ $c -> id }}/like/" title="Agree with this comment">
                                     <ion-icon name="thumbs-up"></ion-icon>
                                 </a>
                             </td>
                             <td>
-                                <a class="button" href="/comment/{{ $c -> id }}/dislike/">
+                                <a class="button" href="/comment/{{ $c -> id }}/dislike/" title="Disagree with this comment">
                                     <ion-icon name="thumbs-down"></ion-icon>
                                 </a>
                             </td>

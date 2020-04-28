@@ -26,17 +26,16 @@ class CommentController extends Controller
     ];
 
     const MESSAGES = [
-        'name.required' => 'Excuse me, May I Know your name?',
         'comment.required' => 'May I have your comment here?',
         'movie.required' => 'Please enter a movie name here.',
         'score.required' => 'Please rate this movie.',
+
     ];
 
     public function index()
     {
 
         $comments = Comment::paginate(self::COMMENTS_PER_PAGE);
-
         return view('index')->with(['comments' => $comments]);
 
     }
@@ -106,6 +105,15 @@ class CommentController extends Controller
 
     }
 
+    /*userDetail function*/
+    public function userDetail(Comment $comment)
+    {
+        $detail = User::where('id',Auth::user()->id)->with("comment")->get();
+
+        return view('auth.userDetail',compact('comment','detail'));
+
+    }
+
     /*logout function*/
     public function logout(Request $request)
     {
@@ -141,7 +149,6 @@ class CommentController extends Controller
                 ->with("user")
                 ->get();
         }
-
         return view('comments.search', compact('keyword', 'result', 'type'));
     }
 

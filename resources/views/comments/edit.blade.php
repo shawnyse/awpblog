@@ -1,11 +1,11 @@
 @extends ('layouts.app')
 
 @section ('page_title')
-    Movie | Edit a Comment from {{ $comment -> name }}
+    Movie | Edit a Comment from {{ $comment-> user -> name }}
 @endsection
 
 @section ('page_heading')
-    Edit the Comment from {{ $comment -> name }}
+    Edit the Comment from {{ $comment -> user -> name }}
 @endsection
 
 @section ('content')

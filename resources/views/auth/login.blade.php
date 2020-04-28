@@ -56,7 +56,7 @@
                 <div class="control">
                     <input class="input" name="code" type="text" placeholder="Verification Code" style="width: 65%;">
                     {{--once click this picture, it will change a verification code(onclick)--}}
-                    <img src="{{url('auth/code')}}" alt="click to change a new code"
+                    <img src="{{url('auth/code')}}" alt="click to refresh" title="click to refresh"
                          onclick="this.src='{{url('auth/code')}}?'+Math.random()">
                 </div>
             </div>

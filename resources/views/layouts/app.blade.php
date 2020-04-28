@@ -34,7 +34,7 @@
                            href="{{ route('register') }}"><strong>{{ __('Register') }}</strong></a>
                     @endif
                 @else
-                    <a class="button is-white">
+                    <a class="button is-white" href="/userDetail/">
                         {{ Auth::user()->name }}
                     </a>
                     <div class="button is-white">
