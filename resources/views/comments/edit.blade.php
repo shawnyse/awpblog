@@ -26,7 +26,16 @@
                         <input class="input" type="text" name="name" value="{{ $comment -> user -> name }}" readonly>
                     </div>
                 </div>
-
+                @if (isset ($comment -> updating_user))
+                    <div class="field">
+                        <label class="label">
+                            Last Updated By:
+                        </label>
+                        <div class="control">
+                            <input class="input" type="text" name="name" value="{{ $comment -> updating_user -> name }}" readonly>
+                        </div>
+                    </div>
+                @endif
                 <div class="field">
                     <label class="label">
                         Movie:

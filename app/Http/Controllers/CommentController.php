@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\User;
+use App\Mail\CommentUpdated;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
@@ -87,10 +90,21 @@ class CommentController extends Controller
 
         $request->validate(self::RULES, self::MESSAGES);
 
-        $comment->update([
-            'comment' => $request->comment,
-            'score' => $request->score,
-        ]);
+        if ($comment->comment != request('comment')) {
+
+            $comment->update([
+
+                'comment' => request('comment'),
+                'score' => $request->score,
+                'updating_user_id' => Auth::user()->id,
+
+            ]);
+
+            if (($comment->user->id != Auth::user()->id) && (!empty ($comment->getChanges()))) {
+                Mail::to($comment->user->email)->send(new CommentUpdated ($comment));
+            }
+
+        }
 
         return redirect()->action('CommentController@index');
 
@@ -108,9 +122,9 @@ class CommentController extends Controller
     /*userDetail function*/
     public function userDetail(Comment $comment)
     {
-        $detail = User::where('id',Auth::user()->id)->with("comment")->get();
+        $detail = User::where('id', Auth::user()->id)->with("comment")->get();
 
-        return view('auth.userDetail',compact('comment','detail'));
+        return view('auth.userDetail', compact('comment', 'detail'));
 
     }
 
@@ -139,13 +153,13 @@ class CommentController extends Controller
         ];
 
         if ($type == 'User') {
-            $result = User::where('name', 'like', '%'.$keyword.'%')->with("comment")->get();
+            $result = User::where('name', 'like', '%' . $keyword . '%')->with("comment")->get();
         } else {
             $result = Comment::where(
-                    $paramMap[$type] ?? $paramMap['default'],
-                    'like',
-                    "%" . $keyword . "%"
-                )
+                $paramMap[$type] ?? $paramMap['default'],
+                'like',
+                "%" . $keyword . "%"
+            )
                 ->with("user")
                 ->get();
         }

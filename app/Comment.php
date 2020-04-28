@@ -8,6 +8,7 @@ class Comment extends Model
 {
     protected $fillable = [
         'user_id',
+        'updating_user_id',
         'comment',
         'likes',
         'movie',
@@ -26,9 +27,17 @@ class Comment extends Model
         $this->update();
     }
 
-    public function user ()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+    public function updating_user()
+    {
+
+        return $this->belongsTo(User::class);
+
+    }
+
 }
 
