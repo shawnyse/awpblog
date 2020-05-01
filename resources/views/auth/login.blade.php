@@ -59,6 +59,7 @@
                     <img src="{{url('auth/code')}}" alt="click to refresh" title="click to refresh"
                          onclick="this.src='{{url('auth/code')}}?'+Math.random()">
                 </div>
+
             </div>
             {{--Check box--}}
             <div class="field">

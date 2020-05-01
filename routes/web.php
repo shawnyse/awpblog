@@ -39,7 +39,8 @@ Auth::routes();
 
 /*This is for verification code*/
 Route::get('auth/code', 'Auth\LoginController@code');
-
+Route::post('user/update', 'UserDetailController@update');
+Route::get('user/changeDetail', 'UserDetailController@changeDetail');
 /*github*/
 Route::get ('/auth/github', 'GitHubAuthController@auth');
 Route::get ('/auth/github/callback', 'GitHubAuthController@callback');

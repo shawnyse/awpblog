@@ -154,6 +154,8 @@ class CommentController extends Controller
 
         if ($type == 'User') {
             $result = User::where('name', 'like', '%' . $keyword . '%')->with("comment")->get();
+        } elseif ($type == "Score") {
+            $result = Comment::where('score',$keyword)->with('user')->get();
         } else {
             $result = Comment::where(
                 $paramMap[$type] ?? $paramMap['default'],

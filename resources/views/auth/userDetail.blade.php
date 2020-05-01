@@ -27,9 +27,10 @@
         {{--use js onclick to control css to show and hide comments--}}
         <div class="field is-grouped">
             <p class="control">
-                <a class="button is-primary is-outlined" href="/password/reset">
-                    <i class="fa fa-wrench"></i>&nbspReset password
+                <a class="button is-primary is-outlined" href="/user/changeDetail">
+                    <i class="fa fa-wrench"></i>&nbspChange Details
                 </a>
+            </p>
             <p class="control">
                 <button class="button is-danger is-outlined" id="showBtn" style="display: block"
                         onclick="this.style='display:none'; hideBtn.style='display:block'; detailCmts.style='padding-top: 200px; display:block';">
