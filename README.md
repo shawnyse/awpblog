@@ -26,7 +26,7 @@ In this assignment, I added more functions to the MovieComment and fixed some bu
 
 * Added a function which could show who updated the comment recently.
 
-* Added verify code(which is drew by canvas on back-end) to the login page.
+* Added verify code(which is drew by PHP on back-end) to the login page.
 
 * Added Third-party login function adapted Github and Weibo.
 
